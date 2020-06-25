@@ -14,7 +14,7 @@ logging.basicConfig(
 )
 
 # Load environment, raise error if not specified
-if os.path.isfile(".env"):
+if os.path.isfile("../.env"):
     dotenv.load_dotenv()
 DO_TOKEN = os.getenv("DO_TOKEN")
 DO_DOMAIN = os.getenv("DO_DOMAIN")
