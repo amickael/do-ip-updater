@@ -20,7 +20,8 @@ DO_TOKEN = os.getenv("DO_TOKEN")
 DO_DOMAIN = os.getenv("DO_DOMAIN")
 IP_TOKEN = os.getenv("IP_TOKEN")
 if not bool(DO_TOKEN and DO_DOMAIN):
-    raise SystemExit("DO_TOKEN and DO_DOMAIN environment variables are required")
+    logging.error("DO_TOKEN and DO_DOMAIN environment variables are required")
+    raise SystemExit
 
 # Configure validation
 R_IPV4 = re.compile(r"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$")
@@ -84,7 +85,8 @@ if __name__ == "__main__":
     try:
         poll_interval = int(poll_interval)
     except ValueError:
-        raise SystemExit("POLL_INTERVAL must be a valid integer")
+        logging.error("POLL_INTERVAL must be a valid integer")
+        raise SystemExit
 
     # Run program
     while True:
